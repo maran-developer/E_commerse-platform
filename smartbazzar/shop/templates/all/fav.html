@@ -1,0 +1,37 @@
+
+
+{% extends 'all/layouts/main.html' %}
+
+
+{% block title %}
+smart bazzar| online shop
+{% endblock title %}
+
+
+{% block content %}
+<section class="bg-light py-4 my-5 " style="min-height:600px;">
+    <div class="container " style="margin-top:70px">
+      <div class="row">
+        <div class="col-12">
+          <h1>Faviourite items</h1>
+          <hr style="border-color:#b8bfc2;">
+        </div>
+           <table class="table table-bordered">
+              <tr>
+                  <th>Images</th>
+                  <th>Product name</th>
+                  <th>Remove</th>
+              </tr>
+               {% for i in fav %}
+               <tr>
+                   <td><img src="{{i.product.product_image.url}}" height="75px" alt="{{i.product.name}}"></td>
+                   <td>{{i.product.name}}</td>
+                   <td><a href="{% url 'delete_fav' i.id %}" onclick="return confirm('Are you sure? to remove')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i>Remove </a></td>
+               </tr>
+               {% endfor %}
+          </table>
+
+      </div>
+    </div>
+</section>
+{% endblock content %}

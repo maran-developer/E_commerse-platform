@@ -1,0 +1,41 @@
+
+
+{% extends 'all/layouts/main.html' %}
+
+{% block title %}
+smart bazzar| online shop
+{% endblock title %}
+
+
+{% block content %}
+<section class="bg-light py-4 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3">{{ category_name }} products</h4>
+                 <hr style="border-color:#b8bfc2;">
+            </div>
+
+             {% for j in products %}
+            <div class="col-md-4 col-lg-3">
+                <div class="card my-3">
+                    <img src="{{j.product_image.url}}" style="height:25vh" class="card-image-top" alt="Category image">
+                    <a href="{% url 'product_details' category_name j.name %}" >
+                        <div class="card-body">
+                            <h5 class="card-title text-primary"> {{ j.name }}</h5>
+                            <p class="card-text">
+                                <span class="float-start old_prize "><s>Rs.{{ j.original_price}}</s></span>
+                                <span class="float-end new_prize ">Rs. {{ j.selling_price }}</span>
+
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

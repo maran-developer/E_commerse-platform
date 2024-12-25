@@ -1,0 +1,46 @@
+{% extends 'all/layouts/main.html' %}
+
+{% block title %}
+collection page| smart bazzar
+{% endblock title %}
+
+{% block content %}
+<section class="py-5 text-center container" style="margin-top:70px;">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">BestSellers</h1>
+            <p class="lead text-muted">Our most popular product based on sales.updated hourly.</p>
+            <p>
+                <a href="#" class="btn btn-primary my-2">Already User</a>
+                <a href="#" class="btn btn-secondary my-2">register User</a>
+
+            </p>
+        </div>
+    </div>
+</section>
+<section class="bg-light py-4 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3">Category</h4>
+                <hr style="border-color:#b8bfc2";>
+            </div>
+
+            {% for i in category %}
+            <div class="col-md-4 col-lg-3">
+                <a href="{% url 'collection' i.name %}">
+                    <div class="card my-3 ">
+                        <img src="{{i.image.url}}" style="height:25vh" class="card-image-top" alt="Category image">
+
+                        <div class="card-body">
+                            <h5 class="card-title text-primary"> {{ i.name }}</h5>
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
